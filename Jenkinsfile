@@ -13,5 +13,13 @@ pipeline {
                 sh 'npm run build || echo "No build script"'
             }
         }
+
+         stage('Test') {
+             steps {
+                 sh 'echo "No test available"'
+      }
+    }
+
+
     }
 }
