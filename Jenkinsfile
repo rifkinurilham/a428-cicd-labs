@@ -1,22 +1,21 @@
 pipeline {
-    agent any
+  agent any
 
-    tools {
-        nodejs 'node18'
+  tools {
+    nodejs 'node18'
+  }
+
+  stages {
+    stage('Build') {
+      steps {
+        sh 'npm install'
+      }
     }
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'npm test || true'
-            }
-        }
+    stage('Test') {
+      steps {
+        sh 'npm test || true'
+      }
     }
+  }
 }
-
