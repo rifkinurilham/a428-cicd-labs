@@ -24,14 +24,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-            echo "Install dependency"
             npm install
-
-            echo "Jalanin aplikasi"
             npm start &
             sleep 60
-
-            echo "Udah 1 menit, selesai" 
+            '''
+             
             }
         }
     }
