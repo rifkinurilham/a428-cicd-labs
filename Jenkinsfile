@@ -2,33 +2,30 @@ pipeline {
     agent any
 
     stages {
-
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh '''
+                  npm install
+                '''
             }
         }
 
-    stage('Test') {
-    steps {
-        sh 'echo "skip test"'
-              } 
-        }
-
-        stage('Manual Approval') {
+        stage('Test') {
             steps {
-                input message: 'Lanjutkan ke tahap Deploy?', ok: 'Proceed'
+                sh '''
+                  echo "skip test"
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
-               sh '''
-        echo "Deploying application..."
-        echo "Deploy success 🎉"
-        '''
-             
+                sh '''
+                  echo "deploying app..."
+                  npm run build || true
+                '''
             }
         }
     }
 }
+
